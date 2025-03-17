@@ -18,6 +18,7 @@ library ConfiguratorInputTypes {
     string stableDebtTokenName;
     string stableDebtTokenSymbol;
     bytes params;
+    bytes interestRateData;
   }
 
   struct UpdateATokenInput {
