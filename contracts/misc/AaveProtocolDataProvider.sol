@@ -1,4 +1,4 @@
-// SPDX-License-Identifier: BUSL-1.1
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
 import {IERC20Detailed} from '../dependencies/openzeppelin/contracts/IERC20Detailed.sol';
@@ -289,5 +289,16 @@ contract AaveProtocolDataProvider is IPoolDataProvider {
       .getConfiguration(asset);
 
     return configuration.getFlashLoanEnabled();
+  }
+
+  function getIsVirtualAccActive(address asset) external view returns (bool) {
+    DataTypes.ReserveConfigurationMap memory configuration = IPool(ADDRESSES_PROVIDER.getPool())
+      .getConfiguration(asset);
+
+    return false; //configuration.getIsVirtualAccActive();
+  }
+
+  function getVirtualUnderlyingBalance(address asset) external view returns (uint256) {
+    return 0; //IPool(ADDRESSES_PROVIDER.getPool()).getVirtualUnderlyingBalance(asset);
   }
 }
